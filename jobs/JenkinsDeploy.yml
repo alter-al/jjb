@@ -1,0 +1,16 @@
+- job:
+    builders:
+    - shell: |-
+        jenkins-jobs --log_level debug --conf jenkins_jobs.ini update jobs/
+    name: 'JenkinsDeploy'
+    project-type: freestyle
+    scm:
+    - git:
+        branches:
+        - '*/master'
+        url: https://github.com/alter-al/jjb
+        wipe-workspace: true
+    triggers:
+    - pollscm:
+        cron: '* * * * *'
+        ignore-post-commit-hooks: false
