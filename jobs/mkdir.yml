@@ -1,0 +1,21 @@
+- job:
+    project-type: pipeline
+    name: 'MKDIR'
+    sandbox: true
+    parameters:
+    - string:
+        default: 'test'
+        description: 'folder name'
+        name: FOLDER_NAME
+    pipeline-scm:
+        scm:
+        - git:
+            url: https://github.com/alter-al/jjb
+            branches:
+              - '*/master'
+            clean: true
+        script-path: pipeline/mkdir.groovy
+        lightweight-checkout: true
+    wrappers:
+    - build-name:
+        name: "#$BUILD_NUMBER mkdir $FOLDER_NAME"
