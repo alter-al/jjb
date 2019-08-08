@@ -1,0 +1,15 @@
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+
+plugins:
+  required:
+    blueocean: latest
+    workflow-aggregator: latest
+
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
