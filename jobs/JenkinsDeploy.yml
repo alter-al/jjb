@@ -2,7 +2,7 @@
     builders:
     - shell: |-
         jenkins-jobs --log_level debug --conf jenkins_jobs.ini update jobs/
-        curl --user aap:11e31b2d8e59933207d708cd242e9ec4ad $JENKINS_URL/configuration-as-code/reload
+        curl -X POST --user aap:11e31b2d8e59933207d708cd242e9ec4ad $JENKINS_URL/configuration-as-code/reload
     name: 'JenkinsDeploy'
     project-type: freestyle
     scm:
