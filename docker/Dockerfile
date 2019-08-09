@@ -7,7 +7,7 @@ ENV CASC_JENKINS_CONFIG https://raw.githubusercontent.com/alter-al/jjb/master/co
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
-# Install Jenkins-Job-Builder
+# Install tools
 USER root
 RUN apk update && apk add wget \
                           curl \
