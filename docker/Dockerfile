@@ -1,6 +1,8 @@
 FROM jenkins/jenkins:2.189-alpine
 MAINTAINER Alex Alter-Pesotskiy <33gri@bk.ru>
 
+ENV CASC_JENKINS_CONFIG https://raw.githubusercontent.com/alter-al/jjb/master/configuration/jenkins.yaml
+
 # Install Jenkins Plugins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
