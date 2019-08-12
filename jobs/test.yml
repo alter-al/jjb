@@ -1,0 +1,14 @@
+- job:
+    project-type: pipeline
+    name: 'Test'
+    sandbox: true
+    pipeline-scm:
+        scm:
+        - git:
+            url: git@github.com:zendesk/zendesk_scarlett_android.git
+            branches:
+              - '*/master'
+            clean: true
+        script-path: pipeline/test.groovy
+        lightweight-checkout: true
+        credentials: b0999eff-a7df-44f6-9aeb-84f639a1ddcb
