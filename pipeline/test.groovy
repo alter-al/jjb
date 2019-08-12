@@ -1,9 +1,9 @@
 pipeline {
 
-    agent { label 'android' }
+    agent { label 'aap' }
 
     environment {
-        ANDROID_HOME = "/Users/mobile/Library/Android/sdk"
+        ANDROID_HOME = "/Users/apesotskiy/Library/Android/sdk"
         ANDROID_SERIAL = "emulator-5554"
         zdAutomationRun = "true"
     }
@@ -16,7 +16,13 @@ pipeline {
         }
         stage('Checkout Repo') {
             steps {
-                checkout scm
+              checkout([$class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [[$class: 'CleanCheckout']],
+                submoduleCfg: [],
+                userRemoteConfigs: [[credentialsId: 'b0999eff-a7df-44f6-9aeb-84f639a1ddcb', url: 'git@github.com:zendesk/zendesk_scarlett_android.git']]
+              ])
             }
         }
         stage('Reset Devices, download Composer') {
