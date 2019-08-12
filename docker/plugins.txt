@@ -21,3 +21,4 @@ junit:1.28
 simple-theme-plugin:0.5.1
 build-blocker-plugin:1.7.3
 naginator:1.18
+rebuild:1.31
