@@ -1,5 +1,15 @@
-tool:
-  git:
-    installations:
-    - home: "git"
-      name: "Testme33"
+# credentials:
+# nodes
+
+security:
+  envInject:
+    enableLoadingFromMaster: false
+    enablePermissions: false
+    hideInjectedVars: true
+
+jenkins:
+  globalNodeProperties:
+    - envVars:
+        env:
+        - key: "FOO"
+          value: "BAR"
