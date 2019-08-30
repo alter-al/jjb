@@ -25,3 +25,4 @@ rebuild:1.31
 ws-cleanup:0.37
 pam-auth:1.5.1
 mask-passwords:2.12.0
+simple-theme-plugin:0.5.1
