@@ -1,15 +1,28 @@
-# credentials:
-# nodes
-
-security:
-  envInject:
-    enableLoadingFromMaster: false
-    enablePermissions: false
-    hideInjectedVars: true
-
 jenkins:
+  systemMessage: "WELCOME TO ZENDESK MOBILE JENKINS!"
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
   globalNodeProperties:
-    - envVars:
-        env:
-        - key: "FOO"
-          value: "BAR"
+  - envInject:
+      propertiesFilePath: "/var/jenkins_home/environment.properties"
+      unsetSystemVariables: true
+
+jobs:
+  - script: >
+      pipelineJob('JenkinsDeploy') {
+        triggers {
+          scm('* * * * *')
+        }
+        definition {
+          cps {
+            script("""
+              node('master') {
+                stage('Deploy Jenkins') {
+                  git(url: 'https://github.com/alter-al/jjb', branch: 'master')
+                  sh("jenkins-jobs  --ignore-cache --log_level debug --conf jenkins_jobs.ini update jobs/")
+                }
+              }""".stripIndent())
+          }
+        }
+      }

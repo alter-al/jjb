@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:2.189-alpine
-MAINTAINER Alex Alter-Pesotskiy <33gri@bk.ru>
+MAINTAINER Alex Alter-Pesotskiy
 
-ENV CASC_JENKINS_CONFIG https://raw.githubusercontent.com/alter-al/jjb/master/configuration/jenkins.yaml
+ENV CASC_JENKINS_CONFIG /var/jenkins_home/workspace/JenkinsDeploy/jenkins.yaml
 
 # Install Jenkins Plugins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
@@ -18,3 +18,7 @@ RUN apk update && apk add wget \
 RUN rm -rf /var/cache/apk/*
 RUN pip install jenkins-job-builder==2.10.0
 USER jenkins
+
+RUN mkdir -p /var/jenkins_home/workspace/JenkinsDeploy
+COPY configuration/jenkins.yaml $CASC_JENKINS_CONFIG
+COPY environment.properties /var/jenkins_home/environment.properties
