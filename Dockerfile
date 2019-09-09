@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.189-alpine
+FROM jenkins/jenkins:2.193-alpine
 MAINTAINER Alex Alter-Pesotskiy
 
 ENV CASC_JENKINS_CONFIG /var/jenkins_home/workspace/JenkinsDeploy/jenkins.yaml
@@ -19,6 +19,6 @@ RUN rm -rf /var/cache/apk/*
 RUN pip install jenkins-job-builder==2.10.0
 USER jenkins
 
-RUN mkdir -p /var/jenkins_home/workspace/JenkinsDeploy
-COPY configuration/jenkins.yaml $CASC_JENKINS_CONFIG
+RUN mkdir -p /var/jenkins_home/workspace
+COPY configuration/jenkins.yaml /var/jenkins_home/workspace/JenkinsDeploy/jenkins.yaml
 COPY environment.properties /var/jenkins_home/environment.properties

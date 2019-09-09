@@ -1,10 +1,9 @@
 blueocean:1.18.1
 workflow-aggregator:2.6
-configuration-as-code:1.27
+configuration-as-code:1.29
 configuration-as-code-support:1.18
 git-parameter:0.9.11
 greenballs:1.15
-credentials:2.2.1
 git:3.11.0
 ssh-slaves:1.30.1
 matrix-auth:2.4.2
@@ -13,7 +12,7 @@ timestamper:1.10
 github-oauth:0.33
 envinject:2.2.0
 email-ext:2.66
-slack:2.29
+slack:2.32
 parameterized-trigger:2.35.2
 copyartifact:1.42.1
 htmlpublisher:1.18
@@ -24,5 +23,6 @@ naginator:1.18
 rebuild:1.31
 ws-cleanup:0.37
 pam-auth:1.5.1
-mask-passwords:2.12.0
-simple-theme-plugin:0.5.1
+job-dsl:1.75
+credentials:2.3.0
+ldap:1.20
